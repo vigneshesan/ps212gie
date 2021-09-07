@@ -1,0 +1,21 @@
+{
+  "name": "gie",
+  "version": "1.0.0",
+  "description": "GIE DATA VISUALIZER",
+  "main": "index.js",
+  "scripts": {
+    "test": "node -v",
+    "start": "node app.js"
+  },
+  "author": "kumm",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^2.8.0",
+    "csv-reader": "^1.0.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "8.12.0"
+  }
+}

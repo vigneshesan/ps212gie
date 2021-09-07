@@ -1,0 +1,648 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="Chart.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<title>
+			GIE Analysis
+		</title>
+	</head>
+	<body>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Click to toggle Graduate Innovation Engineers List  
+  </button>
+		<div class="container rows-print-as-pages">
+			<div class="collapse" id="collapseExample">
+  				<div class="card card-body">
+  					<p>
+				<% for(var index = 0; index<candidate.length; index++){ %>
+					<button onclick="getChart(
+						[
+								<%=candidate[index].Hardware_IoT.m1.scale%>,
+						    	<%=candidate[index].AI_ML_Data_Science.m1.scale%>,
+						    	<%=candidate[index].Software_Application_Development.m1.scale%>, 
+						    	<%=candidate[index].Industry_Product_Design.m1.scale%>,
+						    	<%=candidate[index].Software_Platforms.m1.scale%>,
+						    	<%=candidate[index].Programming_Application_Platform.m1.scale%>,
+						    	<%=candidate[index].IP.m1.scale%>,
+						    	<%=candidate[index].Innovation.m1.scale%>
+						], 
+
+						[
+								<%=candidate[index].Hardware_IoT.m2.scale%>,
+						    	<%=candidate[index].AI_ML_Data_Science.m2.scale%>,
+						    	<%=candidate[index].Software_Application_Development.m2.scale%>, 
+						    	<%=candidate[index].Industry_Product_Design.m2.scale%>,
+						    	<%=candidate[index].Software_Platforms.m2.scale%>,
+						    	<%=candidate[index].Programming_Application_Platform.m2.scale%>,
+						    	<%=candidate[index].IP.m2.scale%>,
+						    	<%=candidate[index].Innovation.m2.scale%>
+						],
+
+						[
+								<%=candidate[index].Hardware_IoT.m3.scale%>,
+						    	<%=candidate[index].AI_ML_Data_Science.m3.scale%>,
+						    	<%=candidate[index].Software_Application_Development.m3.scale%>, 
+						    	<%=candidate[index].Industry_Product_Design.m3.scale%>,
+						    	<%=candidate[index].Software_Platforms.m3.scale%>,
+						    	<%=candidate[index].Programming_Application_Platform.m3.scale%>,
+						    	<%=candidate[index].IP.m3.scale%>,
+						    	<%=candidate[index].Innovation.m3.scale%>
+						],
+
+						' <%=candidate[index].name%> ' ,
+
+						[ <%=candidate[index].Hardware_IoT.m1.kra%>] ,
+				    	[ <%=candidate[index].AI_ML_Data_Science.m1.kra%>] ,
+				    	[ <%=candidate[index].Software_Application_Development.m1.kra%>] , 
+				    	[ <%=candidate[index].Industry_Product_Design.m1.kra%>] ,
+				    	[ <%=candidate[index].Software_Platforms.m1.kra%>] ,
+				    	[ <%=candidate[index].Programming_Application_Platform.m1.kra%>] ,
+				    	[ <%=candidate[index].IP.m1.kra%>] ,
+				    	[ <%=candidate[index].Innovation.m1.kra%>] ,
+
+
+				    	[ <%=candidate[index].Hardware_IoT.m2.kra%>] ,
+				    	[ <%=candidate[index].AI_ML_Data_Science.m2.kra%>] ,
+				    	[ <%=candidate[index].Software_Application_Development.m2.kra%>] , 
+				    	[ <%=candidate[index].Industry_Product_Design.m2.kra%>] ,
+				    	[ <%=candidate[index].Software_Platforms.m2.kra%>] ,
+				    	[ <%=candidate[index].Programming_Application_Platform.m2.kra%>] ,
+				    	[ <%=candidate[index].IP.m2.kra%>] ,
+				    	[ <%=candidate[index].Innovation.m2.kra%>] ,
+
+				    	[ <%=candidate[index].Hardware_IoT.m3.kra%>] ,
+				    	[ <%=candidate[index].AI_ML_Data_Science.m3.kra%>] ,
+				    	[ <%=candidate[index].Software_Application_Development.m3.kra%>] , 
+				    	[ <%=candidate[index].Industry_Product_Design.m3.kra%>] ,
+				    	[ <%=candidate[index].Software_Platforms.m3.kra%>] ,
+				    	[ <%=candidate[index].Programming_Application_Platform.m3.kra%>] ,
+				    	[ <%=candidate[index].IP.m3.kra%>] ,
+				    	[ <%=candidate[index].Innovation.m3.kra%>] ,
+
+
+											)"> 
+												<%= candidate[index].name%>
+					</button>
+				<% } %>
+				</p>
+  				</div>
+			</div>
+			
+
+				
+
+
+			<div class="row">
+			  <div class="col-12">
+			    <div class="card">
+			      <div class="card-body">
+			      	<h3 id="name"></h3>
+			        <p>Overall</p>
+					<canvas  id="bar-chart"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
+			<div class="row">
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Hardware/IoT</p>
+					<canvas  id="hwi-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>AI/ML & Data Science</p>
+					<canvas  id="amd-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="row">
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Software/Application Development</p>
+					<canvas  id="sad-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Industry/Product Design</p>
+					<canvas  id="ipd-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+
+			<div class="row">
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Software Platforms</p>
+					<canvas  id="sps-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Programming Application Platform</p>
+					<canvas  id="pap-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+
+			<div class="row">
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Intellectual Property</p>
+					<canvas  id="ips-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-6">
+			    <div class="card">
+			      <div class="card-body">
+			        <p>Innovation</p>
+					<canvas  id="ino-radar"></canvas>
+			      </div>
+			    </div>
+			  </div>
+			</div>	
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+		<script type="text/javascript">
+		function getChart(m1List, m2List, m3List, name, 
+			hwi_m1_kra, amd_m1_kra, sad_m1_kra, ipd_m1_kra, sps_m1_kra, pap_m1_kra, ips_m1_kra, ino_m1_kra, 
+			hwi_m2_kra, amd_m2_kra, sad_m2_kra, ipd_m2_kra, sps_m2_kra, pap_m2_kra, ips_m2_kra, ino_m2_kra, 
+			hwi_m3_kra, amd_m3_kra, sad_m3_kra, ipd_m3_kra, sps_m3_kra, pap_m3_kra, ips_m3_kra, ino_m3_kra)
+		{
+			document.getElementById('name').innerHTML = name + " GIE DATA";
+			var ctx = document.getElementById('bar-chart');
+			var ct2 = document.getElementById('hwi-radar');
+			var ct3 = document.getElementById('amd-radar');
+			var ct4 = document.getElementById('sad-radar');
+			var ct5 = document.getElementById('ipd-radar');
+			var ct6 = document.getElementById('sps-radar');
+			var ct7 = document.getElementById('pap-radar');
+			var ct8 = document.getElementById('ips-radar');
+			var ct9 = document.getElementById('ino-radar');
+			var myBarChart = new Chart(ctx, {
+										    type: 'bar',
+										    data: 
+										    {
+        										labels: [
+        													'Hardware/IoT', 
+        													'AI/ML & Data Science', 
+        													'Software/Application Development', 
+        													'Industry/Product Design', 
+        													'Software Platforms', 
+        													'Programming Application Platform', 
+        													'Intellectual Property', 
+        													'Innovation'
+        												],
+										        datasets: 
+										        [
+										        {
+										            label: 'AUGUST',
+										            data: m1List,
+										            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+										            borderColor:'rgba(255, 99, 132, 1)',
+										            borderWidth: 1
+										        }, 
+										        {
+										            label: 'OCTOBER',
+										            data: m2List,
+										            backgroundColor: 'rgba(132, 99, 255, 0.2)',
+										            borderColor: 'rgba(132, 99, 255, 1)',
+										            borderWidth: 1
+										        }, 
+										        {
+										            label: 'DECEMBER',
+										            data: m3List,
+										            backgroundColor: 'rgba(248, 148, 6, .2)',
+										            borderColor: 'rgba(248, 148, 6, 1)',
+										            borderWidth: 1
+										        }, 
+    											]
+    										},
+    										options: 
+    										{
+    											events: ['click'],
+    											hover: {
+											        	// Overrides the global setting
+											            // mode: 'point'
+											            showTooltips: false
+											        },
+
+											        scales: {
+											            yAxes: [{
+											            		ticks: {
+											            			beginAtZero: true,
+											            			stepSize: 1,
+											            			max: 10,
+											            		}
+											            		}
+											            		]
+											        	}
+									    	}
+										});
+
+			var hwi_radar = new Chart(ct2, {
+		    type: 'radar',
+		    data: {
+    			labels: 	['Electronic Circuit Design','PCB Designing ', 
+    						'Embedded Hardware Platform', 'Sensor & Actuators', 
+    						'Module Integration with uP and uC', 
+    						'System Interfaces implementation', 
+    						'Data Acquisition Techniques', 
+    						'Basics of Networking', 'Power Design for Circuits'],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: hwi_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: hwi_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: hwi_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					},
+					
+		    	}
+			});
+
+			var amd_radar = new Chart(ct3, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'Data Modelling and Evaluation',
+    						'Probability & Statistics',
+    						'Applied Math & Algorithms',
+    						'Applied Machine Learning Models',
+    						'Distributed Computing',
+    						'Edge Computing'],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: amd_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: amd_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: amd_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});
+
+			var sad_radar = new Chart(ct4, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'Application Architecture Design', 
+    						'Mobile Application Development',
+    						'Cloud Platforms',
+    						'Web Application Development',	
+    						'Linux & Mac Packaging and Deployment'
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: sad_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: sad_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: sad_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});
+
+			var ipd_radar = new Chart(ct5, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'Rapid Prototyping',
+    						'Industrial Design',	
+    						'UI/UX Design',
+    						'CAD Design',
+    						'Analysis of Mechanical Design',
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: ipd_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: ipd_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: ipd_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});
+
+			var sps_radar = new Chart(ct6, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'EAGLE PCB',
+    						'PSIM/MultiSIM',	
+    						'LabVIEW',	
+    						'MATLAB',	
+    						'TABLEAU',
+    						'Google Analytics, TIBCO SpotFire',
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: sps_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: sps_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: sps_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});
+
+			var pap_radar = new Chart(ct7, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'Defining Problem, Problem Decomposition and Planning Code',
+    						'Computer Science Fundamentals',	
+    						'Programming Techniques',
+    						'Programming Languages Known',
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: pap_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: pap_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: pap_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});
+
+			var ips_radar = new Chart(ct8, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'IP Exploration & Patent Search',	
+    						'Patent Drafting',
+    						'Keyword Search'
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: ips_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: ips_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: ips_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});		
+
+
+			var ino_radar = new Chart(ct9, {
+		    type: 'radar',
+		    data: {
+    			labels: [
+    						'Problem Validation',
+    						'Customer Discovery',
+    						'Crafting & Testing Value Proposition',	
+    						'Solution Alternatives Exploration',
+    						'Product Vision & Pitch',
+    						'Grant Proposal Writing',
+    						'Milestone Planning and Reporting',
+    					],
+			    datasets: [
+			    	{
+			    		label: "JULY",
+			        	data: ino_m1_kra,
+			        	backgroundColor: 'rgba(255, 99, 132, 0.2)',
+			        	borderColor: 'rgba(255, 99, 132, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "OCTOBER",
+			        	data: ino_m2_kra,
+			        	backgroundColor: 'rgba(132, 99, 255, 0.2)',
+			        	borderColor: 'rgba(132, 99, 255, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	{
+			    		label: "DECEMBER",
+			        	data: ino_m3_kra,
+			        	backgroundColor: 'rgba(248, 148, 6, .2)',
+			        	borderColor: 'rgba(248, 148, 6, 1)',
+			        	borderWidth: 1,
+			    	},
+			    	]
+				},
+			options:
+				{
+					events: ['click'],
+					scale: {
+							ticks: {
+				        			min: 0,
+				        			stepSize: 10,
+				        			max: 50,
+        					}		
+					}
+		    	}
+			});				
+}
+		</script>
+	
+	</body>
+
+</html>
