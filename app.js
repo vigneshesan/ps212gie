@@ -219,7 +219,7 @@ month1Data
 				        }
 
 				        var gieDataJson = {
-								"name":"The Originals",
+								"name":"PROTOSEM21.2",
 								"Hardware_IoT":
 									{"m1":
 										{"scale": Math.round(toTal[0]/gieDataList.length), 'kra':sumKra[0]}, 
